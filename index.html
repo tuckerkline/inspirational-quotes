@@ -5,6 +5,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel= "stylesheet" href = "stylesheet.css" type="text/css">
 </head>
 <body ng-controller="mainController">
@@ -18,16 +19,17 @@
 <br>
 <button ng-click= "random()">Random Quote</button>	
 
-<ul ng-repeat="quote in quotes | orderBy: 'rating'">
+<ul ng-repeat="quote in quotes | orderBy: '-rating'">
 	<li> 
+	<h5>{{$index + 1}}.</h5>
 	"{{ quote.text }}" <br>
 	<a>-{{ quote.author }} </a> <br>
-	Rating: {{ rating }} 
-	<hr>
+	Rating: {{ quote.rating }} 
+	
 	<form>
 	
 		
-<select name="singleSelect" id="singleSelect" ng-model="rating">
+<select name="singleSelect" id="singleSelect" ng-model="quote.rating">
       <option value=""></option> 
       <option value="1"> 1 </option>	
       <option value="2"> 2 </option>
@@ -35,9 +37,8 @@
       <option value="4"> 4 </option>
       <option value="5"> 5 </option>
     </select>
-    <button ng-click = "rate()">rate</button><br>
 	</li>
-
+<button ng-click = 'delete($index)'><i class="fa fa-trash"></i></button>
 	
 </ul>
 </div>
