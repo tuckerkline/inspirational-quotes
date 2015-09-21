@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app = 'myApp'>
+<head>
+	<title>Inspirational Quotes</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel= "stylesheet" href = "stylesheet.css" type="text/css">
+</head>
+<body ng-controller="mainController">
+<div class = "main container">
+<h1>Inspirational Quotes</h1>
+<form>
+<input placeholder = "quote here" ng-model = "text" maxlength="500"> <br>
+<input placeholder = "quote author here" ng-model = "author" maxlength="500"> <br>
+<button ng-click = "submit()">Submit</button>
+</form>
+<br>
+<button ng-click= "random()">Random Quote</button>	
+
+<ul ng-repeat="quote in quotes | orderBy: 'rating'">
+	<li> 
+	"{{ quote.text }}" <br>
+	<a>-{{ quote.author }} </a> <br>
+	Rating: {{ rating }} 
+	<hr>
+	<form>
+	
+		
+<select name="singleSelect" id="singleSelect" ng-model="rating">
+      <option value=""></option> 
+      <option value="1"> 1 </option>	
+      <option value="2"> 2 </option>
+      <option value="3"> 3 </option>
+      <option value="4"> 4 </option>
+      <option value="5"> 5 </option>
+    </select>
+    <button ng-click = "rate()">rate</button><br>
+	</li>
+
+	
+</ul>
+</div>
+
+
+<script src='javascript.js'></script> 
+</body>
+</html>
