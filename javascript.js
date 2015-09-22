@@ -51,6 +51,12 @@ var mainControllerFunc = function($scope) {
 	 	// $scope.selectedAuthor.push()
 	 }
 
+	 $scope.closeit = function() {
+	 	$scope.authorShow = false;
+	 	console.log($scope.authorShow	)
+
+	 }
+
 }
 
 

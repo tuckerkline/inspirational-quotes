@@ -51,11 +51,15 @@
 	
 </ul>
 
-<div ng-show = 'authorShow'>
+<div class = 'randomPopupBG' ng-show = 'authorShow'>
+<div class = 'randomPopup'>
+<button ng-click = 'closeit()'>x</button><br>
+<br>
 All quotes by {{ selectedAuthorQuotes[0].author }}: <br>
 <div  ng-repeat= "squotes in selectedAuthorQuotes"> "{{ squotes.text }}"</div>
 
 
+</div>
 </div>
 
 
