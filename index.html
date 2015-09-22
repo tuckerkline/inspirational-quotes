@@ -12,18 +12,27 @@
 <div class = "main container">
 <h1>Inspirational Quotes</h1>
 <form>
-<input placeholder = "quote here" ng-model = "text" maxlength="500"> <br>
+<input placeholder = "quote here" ng-model = "text" length="500"> <br>
 <input placeholder = "quote author here" ng-model = "author" maxlength="500"> <br>
-<button ng-click = "submit()">Submit</button>
+<button class="btn btn-primary" ng-click = "submit()">Submit</button>
 </form>
 <br>
-<button ng-click= "random()">Random Quote</button>	
+    <a class="btn btn-default" href ng-click="show()">random</a>
+
+<div class = 'randomPopupBG' ng-show = 'shown'>
+    <div  class = 'randomPopup'>
+    Random Quote!: <br>
+    	"{{ randomQuote[0].text }}" <br>
+    	-{{ randomQuote[0].author }} <br>
+    	<button ng-click = 'close()'>x</button>
+    </div>
+</div>
 
 <ul ng-repeat="quote in quotes | orderBy: '-rating'">
 	<li> 
 	<h5>{{$index + 1}}.</h5>
 	"{{ quote.text }}" <br>
-	<a>-{{ quote.author }} </a> <br>
+	<a ng-click = 'showAuthor($index)'>-{{ quote.author }} </a> <br>
 	Rating: {{ quote.rating }} 
 	
 	<form>
@@ -41,7 +50,21 @@
 <button ng-click = 'delete($index)'><i class="fa fa-trash"></i></button>
 	
 </ul>
+
+<div ng-show = 'authorShow'>
+All quotes by {{ selectedAuthorQuotes[0].author }}: <br>
+<div  ng-repeat= "squotes in selectedAuthorQuotes"> "{{ squotes.text }}"</div>
+
+
 </div>
+
+
+
+
+
+</div>
+
+
 
 
 <script src='javascript.js'></script> 
